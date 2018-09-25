@@ -1,8 +1,11 @@
+/* Dzięki temu zapisowi node odczyta komunikaty jako stringi z kodowaniem UTF-8 */
 process.stdin.setEncoding('utf-8');
 
- // metoda .read() ma za zadanie odczytać co użytkownik podał na wejściu
+ 
+ /* Poniższe można czytać: na zdarzenie (.on) odczytu ('readable') masz wykonać funkcję (function () ) */
+ /*process.stdin.on('readable', function(){
 
-/*process.stdin.on('readable', function(){
+ 	// metoda .read() ma za zadanie odczytać co użytkownik podał na wejściu
 	var input = process.stdin.read();
 		if(input !== null){
 			// teraz jest sens cokolwiek wyświetlać :)
@@ -23,7 +26,8 @@ process.stdin.setEncoding('utf-8');
 			process.exit();
 		}
 		if (instruction === 'node_version') {
-			process.stdout.write(console.log(process.versions));
+			process.stdout.write(JSON.stringify(process.versions));
+			process.stdout.write('\n');
 		}
 		else {
 			process.stderr.write('Wrong instruction!\n');
@@ -34,7 +38,7 @@ process.stdin.setEncoding('utf-8');
 process.stdin.on('readable', function(){	
 	var input = process.stdin.read();
 
-	if(input !== null){
+	if(input !== null){90
 		/*process.stdout.write(input);*/
 		var instruction = input.toString().trim();
 
@@ -46,7 +50,8 @@ process.stdin.on('readable', function(){
 			break;
 
 			case 'node_version':
-				process.stdout.write(console.log(process.versions));
+				process.stdout.write(JSON.stringify(process.versions));
+				process.stdout.write('\n');
 			break;
 
 			default:
